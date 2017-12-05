@@ -69,6 +69,9 @@ def snake_ate_food(snake, food):
     food - 2-tuple representing the position in the grid of the food
     This function should return True if the head of the snake is in the same position as food.
     """
+    for pos in snake:
+        if pos == food:
+            return True
     return False
 
 def snake_ran_out_of_bounds(snake):
