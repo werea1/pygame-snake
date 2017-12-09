@@ -83,6 +83,8 @@ def snake_ran_out_of_bounds(snake):
         for index2 in range(len(snake[index1])):
             if snake[index1][index2] == 30:
                 return True
+            elif snake[index1][index2] == -1:
+                return True
     return False
 
 def snake_intersected_body(snake):
@@ -105,6 +107,8 @@ def get_score(snake):
     The user earns 10 points for each of the segments in the snake.
     For example, if the snake has 25 segments, the score is 250.
     """
+    if len(snake) > 10:
+        return len(snake) * 10
     return 0
 
 def get_game_over_text(score):
@@ -112,7 +116,7 @@ def get_game_over_text(score):
     This text should contain 'Game Over' as well as the score.
     score - integer representing the current score of the game.
     """
-    return 'Game Over.'
+    return 'Game Over: ' + str(score)
 
 def get_snake_speed(snake):
     """Return the number of cells the snake should travel in one second.
