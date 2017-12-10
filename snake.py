@@ -45,13 +45,21 @@ def get_direction(previous_direction, event_key):
     If event_key does not correspond with any of the arrows keys, return previous_direction.
     """
     if event_key == pygame.K_LEFT:
+        if previous_direction == DIRECTION_RIGHT:
+            return DIRECTION_RIGHT
         return DIRECTION_LEFT
     elif event_key == pygame.K_UP:
-        return DIRECTION_UP
+         if previous_direction == DIRECTION_DOWN:
+            return DIRECTION_DOWN
+         return DIRECTION_UP
     elif event_key == pygame.K_RIGHT:
-        return DIRECTION_RIGHT
+         if previous_direction == DIRECTION_LEFT:
+            return DIRECTION_LEFT
+         return DIRECTION_RIGHT
     elif event_key == pygame.K_DOWN:
-        return DIRECTION_DOWN
+         if previous_direction == DIRECTION_UP:
+            return DIRECTION_UP
+         return DIRECTION_DOWN
     return previous_direction
 
 def create_food_position():
@@ -134,6 +142,18 @@ def get_snake_speed(snake):
         return 30
     elif len(snake) >= 45:
         return 40
+    elif len(snake) >= 55:
+        return 50
+    elif len(snake) >= 65:
+        return 60
+    elif len(snake) >= 75:
+        return 70
+    elif len(snake) >= 85:
+        return 80
+    elif len(snake) >= 95:
+        return 90
+    elif len(snake) >= 105:
+        return 100
     return 5
 
 def move_snake(snake, direction, food):
